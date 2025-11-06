@@ -1,6 +1,6 @@
 'use client';
 
-import { allCocktails } from '../../constants/index.js'
+import { sliderLists } from '../../constants'
 import { useRef, useState } from 'react'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap';
@@ -22,7 +22,7 @@ const Menu = () => {
 	})
  }, [currentIndex]);
  
- const totalCocktails = allCocktails.length;
+ const totalCocktails = sliderLists.length;
  
  const goToSlide = (index) => {
 	const newIndex = (index + totalCocktails) % totalCocktails;
@@ -31,7 +31,7 @@ const Menu = () => {
  }
  
  const getCocktailAt = (indexOffset) => {
-	return allCocktails[(currentIndex + indexOffset + totalCocktails) % totalCocktails]
+	return sliderLists[(currentIndex + indexOffset + totalCocktails) % totalCocktails]
  }
  
  const currentCocktail = getCocktailAt(0);
@@ -48,7 +48,7 @@ const Menu = () => {
 	 </h2>
 	 
 	 <nav className="cocktail-tabs" aria-label="Cocktail Navigation">
-		{allCocktails.map((cocktail, index) => {
+		{sliderLists.map((cocktail, index) => {
 		 const isActive = index === currentIndex;
 		 
 		 return (
